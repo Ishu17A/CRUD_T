@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Aman_MVCTest_.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<h1 style="color:green">@ViewBag.messasge</h1>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <img src="@Url.Content(item.Image)" class="card-img-top" alt="Blog Image">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Body)</p>
+                    <p class="card-text">Author: @Html.DisplayFor(modelItem => item.Author)</p>
+                </div>
+                <div class="card-footer">
+                    @Html.ActionLink("Disable This Blog ", "Delete", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+                   
+                </div>
+            </div>
+        </div>
+    }
+</div>
